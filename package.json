@@ -1,0 +1,23 @@
+{
+  "name": "code-20210508-malayjoshi",
+  "version": "1.0.0",
+  "description": "bmi calculator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malayjoshi/code-20210508-malayjoshi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/malayjoshi/code-20210508-malayjoshi/issues"
+  },
+  "homepage": "https://github.com/malayjoshi/code-20210508-malayjoshi#readme",
+  "dependencies": {
+    "JSONStream": "^1.3.5",
+    "event-stream": "^4.0.1"
+  }
+}
