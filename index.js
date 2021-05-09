@@ -15,6 +15,14 @@ pipe(es.mapSync(function (data) {
     return data
   }));
 
+var mapOfRanges=new Map(); //map of risks and ranges
+mapOfRanges.set("Malnutrition",{low:0,high:18.4,category:"Under-weight"});
+mapOfRanges.set("Low",{low:18.5,high:24.9,category:"Normal weight"});
+mapOfRanges.set("Enhanced",{low:25,high:29.9,category:"Over-weight"});
+mapOfRanges.set("Medium",{low:30,high:34.9,category:"Moderately-obese"});
+mapOfRanges.set("High",{low:35,high:39.9,category:"Severly-weight"});
+mapOfRanges.set("Very high",{low:40,high:100,category:"Very severely-obese"});
+
 
 function processPatient(data){
 
@@ -29,8 +37,16 @@ function processPatient(data){
 
     //if heightCM > 0  
     if(data.HeightCm>0){
-        //round of to 2 decimal places
+        //round off to 2 decimal places
         bmiDetails.bmi=( data.WeightKg*10000/(data.HeightCm*data.HeightCm) ).toFixed(2);
+
+        for (let [key, value] of mapOfRanges) {
+          if( value.low<=bmiDetails.bmi && value.high>=bmiDetails.bmi ){
+            bmiDetails.category=value.category;
+            bmiDetails.risk=key;
+            break;
+          }
+        }
     }
 
     console.log(bmiDetails);
